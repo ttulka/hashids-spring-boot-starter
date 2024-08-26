@@ -3,11 +3,10 @@ plugins {
     `maven-publish`
     signing
 
-    id("org.ajoberstar.grgit") version "4.0.2"
+    id("org.ajoberstar.grgit") version "5.2.2"
 
-    id("org.springframework.boot") version "2.2.6.RELEASE"
-    id("io.spring.dependency-management") version "1.0.9.RELEASE"
-    id("io.freefair.lombok") version "5.0.1"
+    id("io.spring.dependency-management") version "1.1.6"
+    id("io.freefair.lombok") version "8.10"
 }
 
 group = "systems.fehn"
@@ -19,15 +18,14 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.springframework.boot:spring-boot-starter")
-    compileOnly("org.springframework.boot:spring-boot-starter-web")
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:3.3.2"))
 
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    annotationProcessor("org.springframework.boot:spring-boot-autoconfigure-processor")
+    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    implementation("com.fasterxml.jackson.core:jackson-databind")
 
     api("org.hashids:hashids:1.0.3")
-
-    compileOnly("com.fasterxml.jackson.core:jackson-databind")
 }
 
 java.withSourcesJar()

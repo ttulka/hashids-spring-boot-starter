@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public class TypeInformation {
+
     private final boolean isArray;
     private final boolean isBoxed;
     private final boolean isLong;

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.stream.LongStream;
 
 public class HashidsDeserializer extends StdScalarDeserializer<Object> implements ContextualDeserializer {
+
     private final TypeInformation typeInformation;
     private final HashidsProvider provider;
     private final Hashids annotation;

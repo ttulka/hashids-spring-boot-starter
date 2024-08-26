@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class HashidsProvider {
+
     private final Map<HashidsProperties, org.hashids.Hashids> lruCache = new LinkedHashMap<>(10, .75f, true) {
         @Override
         protected boolean removeEldestEntry(final Map.Entry<HashidsProperties, org.hashids.Hashids> eldest) {
@@ -18,9 +19,9 @@ public class HashidsProvider {
     }
 
 
-    public org.hashids.Hashids getHashids(final String salt,
-                                          final int minHashLength,
-                                          final String alphabet) {
+    public org.hashids.Hashids getFromProperties(final String salt,
+                                                 final int minHashLength,
+                                                 final String alphabet) {
         final var key = new HashidsProperties(salt, minHashLength, alphabet);
         {
             final var hashids = lruCache.get(key);
@@ -49,6 +50,6 @@ public class HashidsProvider {
         final var alphabet = annotation.alphabet().equals(Hashids.ALPHABET_FROM_PROPERTIES) ?
             properties.getAlphabet() : annotation.alphabet();
 
-        return getHashids(salt, minHashLength, alphabet);
+        return getFromProperties(salt, minHashLength, alphabet);
     }
 }

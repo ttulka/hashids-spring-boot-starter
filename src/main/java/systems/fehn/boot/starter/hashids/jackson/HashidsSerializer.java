@@ -15,6 +15,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class HashidsSerializer extends StdScalarSerializer<Object> implements ContextualSerializer {
+
     private final TypeInformation typeInformation;
     private final HashidsProvider provider;
     private final Hashids annotation;
@@ -62,7 +63,6 @@ public class HashidsSerializer extends StdScalarSerializer<Object> implements Co
 
         gen.writeString(encoded);
     }
-
 
     public static String encode(final Object value, final org.hashids.Hashids hashids, final TypeInformation typeInformation) {
         if (typeInformation.isArray()) {

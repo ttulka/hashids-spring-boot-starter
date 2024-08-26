@@ -10,7 +10,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @Setter
 public class HashidsProperties {
+
     private String salt = null;
+
     private int minHashLength = 0;
+
     private String alphabet = null;
 }
